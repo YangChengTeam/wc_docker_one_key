@@ -1,7 +1,7 @@
 ## wc_docker_one_key
 
 ### 安装
--  **php 将文件上传至 /home/myweb/yf-local**
+-  **php 将所有源代码文件上传至 /home/myweb/yf-local**
 -  git clone https://github.com/YangChengTeam/wc_docker_one_key.git
 -  sh install.sh
 -  sh pulsar_create_tenants_topics.sh
