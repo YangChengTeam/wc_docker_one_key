@@ -1,0 +1,28 @@
+{
+  "apps": [
+    {
+      "name": "plusarNode",
+      "script": "sh /home/myweb/pulsarNode.sh"
+    },
+    {
+      "name": "ProducerServer",
+      "script": "php /home/myweb/yf-local/crontab/ProducerServer.php start"
+    },
+    {
+      "name": "ConsumerServer",
+      "script": "php /home/myweb/yf-local/crontab/ConsumerServer.php start"
+    },
+    {
+      "name": "SyncServer",
+      "script": "php /home/myweb/yf-local/crontab/SyncServer.php start"
+    },
+    {
+      "name": "ParkinglotCameraWebServer",
+      "script": "php /home/myweb/yf-local/crontab/ParkinglotCameraWebServer.php start"
+    },
+    {
+      "name": "ParkinglotNavCameraWebServer",
+      "script": "php /home/myweb/yf-local/crontab/ParkinglotNavCameraWebServer.php start"
+    }
+  ]
+}
