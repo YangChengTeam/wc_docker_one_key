@@ -2,6 +2,11 @@
 
 ### 安装
 -  **php 将所有源代码文件上传至 /home/myweb/yf-local**
+   - 修改配置参数
+      - mysql服务器名称:mysql
+      - redis服务器名称:redis
+      - pulsar服务器名称:pulsar
+      - pulsar token: 查看./client.token
 -  git clone https://github.com/YangChengTeam/wc_docker_one_key.git
 -  sh install.sh
 -  sh pulsar_create_tenants_topics.sh
