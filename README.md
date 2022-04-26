@@ -5,7 +5,7 @@
 -  git clone https://github.com/YangChengTeam/wc_docker_one_key.git
 -  sh install.sh
 -  sh pulsar_create_tenants_topics.sh
-   - 等待 pulsar_manager 已启动
+   - 等待 pulsa 已启动
 -  sh pulsar_manager_create_account.sh 
    - http://服务器ip:9527/#/management/tenants
    - 等待 pulsar_manager 已启动
