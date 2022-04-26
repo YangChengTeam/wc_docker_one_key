@@ -16,6 +16,7 @@ services:
       - ./nginx/ca/server.key:/etc/nginx/server.key:ro
     links:
       - fpm:__DOCKER_PHP_FPM__
+    restart: always
 
   # php-fpm
   fpm:
@@ -35,6 +36,9 @@ services:
       - mysql:mysql
       - redis:redis
       - pulsar:pulsar
+    depends_on:
+      - pulsar
+    restart: always
 
   # database
   mysql:
@@ -48,6 +52,7 @@ services:
       - MYSQL_ROOT_PASSWORD=123456
       - MYSQL_ROOT_USER=root
       - MYSQL_DATABASE=yf_gateway
+    restart: always
 
   redis:
     image: redis:latest
@@ -56,6 +61,7 @@ services:
       - "6379:6379"
     volumes:
       - ./redis/redis.conf:/usr/local/etc/redis/redis.conf
+    restart: always
 
   #pulsar
   pulsar:
@@ -72,6 +78,7 @@ services:
     ports:
       - 6650:6650
       - 8080:8080
+    restart: always
 
   #pulsar_manager
   pulsar_manager:
@@ -89,3 +96,4 @@ services:
       - pulsar
     links:
       - pulsar:pulsar
+    restart: always
