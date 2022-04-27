@@ -14,8 +14,8 @@
 -  sh pulsar_create_tenants_topics.sh
    - pulsar 启动后执行
 -  sh pulsar_manager_create_account.sh 
-   - http://服务器ip:9527/#/management/tenants
-   - pulsar_manager 启动执行
+   - http://服务器ip:9527/#/
+   - pulsar_manager 启动后执行
 -  sh app.sh config
 -  sh app.sh start
     -  sh app.sh [start|restart|stop|log|status]
