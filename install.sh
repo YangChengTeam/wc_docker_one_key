@@ -1,5 +1,16 @@
 #! /bin/sh
 
+if [[ ! -e /etc/docker/daemon.json ]];then
+    mkdir /etc/docker/
+    cat <<EOT >  /etc/docker/daemon.json 
+{
+
+        "registry-mirrors":["https://almtd3fa.mirror.aliyuncs.com"]      
+
+}
+EOT
+
+fi
 
 DISTRO='CentOS'
 if grep -Eqi "CentOS" /etc/issue || grep -Eq "CentOS" /etc/*-release; then
@@ -23,15 +34,6 @@ if [[ ${DISTRO} == "CentOS" ]];then
     sudo yum install -y docker-ce docker-ce-cli containerd.io
 
     sudo systemctl enable docker
-    sudo systemctl start docker
-    cat <<EOT >  /etc/docker/daemon.json 
-{
-
-        "registry-mirrors":["https://almtd3fa.mirror.aliyuncs.com"]      
-
-}
-EOT
-    sudo systemctl restart docker
 fi
 
 if [[ ${DISTRO} == "Debian" ||  ${DISTRO} == "Ubuntu" ]];then
@@ -57,6 +59,8 @@ else
     echo "download docker-compose fail exec sh install.sh again."
     exit
 fi
+
+service docker start 
 
 docker-compose build
 docker-compose up -d
