@@ -9,6 +9,7 @@
       - pulsar服务器名称:pulsar
       - pulsar token: 查看./client.token
 -  git clone https://github.com/YangChengTeam/wc_docker_one_key.git
+- cd wc_docker_one_key
 -  sh install.sh
 -  sh pulsar_create_tenants_topics.sh
    - 等待 pulsar 已启动
