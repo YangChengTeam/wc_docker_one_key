@@ -14,8 +14,6 @@ RUN docker-php-ext-install pdo pdo_mysql
 RUN docker-php-ext-install sockets
 RUN docker-php-ext-enable redis pcntl mysqli pdo pdo_mysql sockets
 
-RUN chmod -R 777 /home/myweb/yf-local/runtime
-
 RUN apt-get install -y nodejs npm wget
 RUN apt-get install g++  && \
     wget --no-check-certificate --user-agent=Mozilla -O apache-pulsar-client-dev.deb "https://archive.apache.org/dist/pulsar/pulsar-2.9.1/DEB/apache-pulsar-client-dev.deb" && \

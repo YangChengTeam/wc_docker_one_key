@@ -15,3 +15,5 @@
    - http://服务器ip:9527/#/management/tenants
    - 等待 pulsar_manager 已启动
 -  sh app.sh start
+
+

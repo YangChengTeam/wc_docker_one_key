@@ -1,7 +1,7 @@
 #!/bin/sh
 function usage() {
     echo "usage: "
-    echo "sh app.sh [start|restart|stop|log|status]"
+    echo "sh docker.sh [up|restart|down]"
     exit
 }
 
@@ -11,7 +11,6 @@ if [[ $1 == "" ]]; then
 fi
 
 if [[ $1 == "start" ]]; then
-    docker exec fpm chmod -R 777 /home/myweb/yf-local/runtime
     docker exec fpm pm2 start /home/myweb/app.json
     docker exec fpm pm2 log
 fi
