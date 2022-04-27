@@ -21,12 +21,6 @@ if [[ ${DISTRO} == "CentOS" ]];then
     sudo yum install -y yum-utils
     sudo yum-config-manager     --add-repo     https://download.docker.com/linux/centos/docker-ce.repo
     sudo yum install -y docker-ce docker-ce-cli containerd.io
-    sudo curl -L "https://github.com/docker/compose/releases/download/1.18.0/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
-    if [[ -e /usr/local/bin/docker-compose ]];then
-        sudo chmod +x /usr/local/bin/docker-compose
-    else 
-        echo "download docker-compose fail exec sh install.sh again."
-    fi
 
     sudo systemctl enable docker
     sudo systemctl start docker
@@ -38,9 +32,6 @@ if [[ ${DISTRO} == "CentOS" ]];then
 }
 EOT
     sudo systemctl restart docker
-
-    docker-compose build
-    docker-compose up -d
 fi
 
 if [[ ${DISTRO} == "Debian" ||  ${DISTRO} == "Ubuntu" ]];then
@@ -55,3 +46,17 @@ fi
 if [[ ${DISTRO} == "RHEL" ]];then
    yum install docker-ce docker-ce-cli containerd.io docker-compose-plugin
 fi
+
+if [[ ! -e /usr/local/bin/docker-compose ]];then
+        sudo curl -L "https://github.com/docker/compose/releases/download/1.18.0/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+fi
+
+if [[ -e /usr/local/bin/docker-compose ]];then
+    sudo chmod +x /usr/local/bin/docker-compose
+else 
+    echo "download docker-compose fail exec sh install.sh again."
+    exit
+fi
+
+docker-compose build
+docker-compose up -d
