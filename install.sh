@@ -1,12 +1,5 @@
 #! /bin/sh
 
-cat <<EOT >  /etc/docker/daemon.json 
-{
-
-        "registry-mirrors":["https://almtd3fa.mirror.aliyuncs.com"]      
-
-}
-EOT
 
 DISTRO='CentOS'
 if grep -Eqi "CentOS" /etc/issue || grep -Eq "CentOS" /etc/*-release; then
@@ -30,9 +23,17 @@ if [[ ${DISTRO} == "CentOS" ]];then
     sudo yum install -y docker-ce docker-ce-cli containerd.io
     sudo curl -L "https://github.com/docker/compose/releases/download/1.18.0/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
     sudo chmod +x /usr/local/bin/docker-compose
-    
+
     sudo systemctl enable docker
     sudo systemctl start docker
+    cat <<EOT >  /etc/docker/daemon.json 
+{
+
+        "registry-mirrors":["https://almtd3fa.mirror.aliyuncs.com"]      
+
+}
+EOT
+    sudo systemctl restart docker
 
     docker-compose build
     docker-compose up -d
@@ -43,10 +44,10 @@ if [[ ${DISTRO} == "Debian" ||  ${DISTRO} == "Ubuntu" ]];then
     sudo apt-get install docker-ce docker-ce-cli containerd.io docker-compose-plugin
 fi
 
-if [[ ${DISTRO} == "Fedora"]];then
+if [[ ${DISTRO} == "Fedora" ]];then
    sudo dnf install docker-ce docker-ce-cli containerd.io docker-compose-plugin
 fi
 
-if [[ ${DISTRO} == "RHEL"]];then
+if [[ ${DISTRO} == "RHEL" ]];then
    yum install docker-ce docker-ce-cli containerd.io docker-compose-plugin
 fi
