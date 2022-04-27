@@ -14,14 +14,20 @@ RUN docker-php-ext-install pdo pdo_mysql
 RUN docker-php-ext-install sockets
 RUN docker-php-ext-enable redis pcntl mysqli pdo pdo_mysql sockets
 
-RUN apt-get install -y nodejs npm wget
-RUN apt-get install g++  && \
-    wget --no-check-certificate --user-agent=Mozilla -O apache-pulsar-client-dev.deb "https://archive.apache.org/dist/pulsar/pulsar-2.9.1/DEB/apache-pulsar-client-dev.deb" && \
-    wget --no-check-certificate --user-agent=Mozilla -O apache-pulsar-client.deb "https://archive.apache.org/dist/pulsar/pulsar-2.9.1/DEB/apache-pulsar-client.deb" && \
-    dpkg --force-architecture -i apache-pulsar-client*.deb
 
-WORKDIR  /home/myweb/yf-local
-RUN npm install pulsar-client --unsafe-perm=true --allow- && \
+
+COPY apache-pulsar-client-dev.deb /opt/apache-pulsar-client-dev.deb
+COPY apache-pulsar-client.deb /opt/apache-pulsar-client.deb
+RUN dpkg -i  /opt/apache-pulsar-client*.deb
+
+RUN apt-get install -y wget
+RUN wget -qO- https://deb.nodesource.com/setup_14.x | bash -
+RUN apt-get install -y nodejs
+RUN apt-get install g++
+    
+
+COPY src/pulsar /home/myweb/pulsar
+RUN cd /home/myweb/pulsar && npm install pulsar-client && \
     npm install -g pm2 --registry=https://registry.npm.taobao.org
 
 

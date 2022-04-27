@@ -21,12 +21,13 @@ services:
   # php-fpm
   fpm:
     container_name: fpm
-    build: ./php/
+    build:
+        context: ./php/
+        dockerfile: Dockerfile     
     ports:
       - "9000"
     volumes:
       # app
-      - ./src/pulsar:/home/myweb/pulsar
       - /home/myweb/yf-local:/home/myweb/yf-local
       - ./php/app.json:/home/myweb/app.json
       - ./php/pulsarNode.sh:/home/myweb/pulsarNode.sh
@@ -36,8 +37,6 @@ services:
       - mysql:mysql
       - redis:redis
       - pulsar:pulsar
-    depends_on:
-      - pulsar
     restart: always
 
   # database
