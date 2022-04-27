@@ -12,6 +12,7 @@ fi
 
 if [[ $1 == "config" ]]; then 
    docker exec fpm chmod -R 777 /home/myweb/yf-local/runtime
+   docker exec fpm npm install --prefix /home/myweb/pulsar pulsar-client
 fi
 
 if [[ $1 == "start" ]]; then 

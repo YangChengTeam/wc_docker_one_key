@@ -16,7 +16,9 @@
 -  sh pulsar_manager_create_account.sh 
    - http://服务器ip:9527/#/management/tenants
    - 等待 pulsar_manager 已启动
--  sh app.sh config && sh app.sh start
+-  sh app.sh config
+-  sh app.sh start
+    -  sh app.sh [start|restart|stop|log|status]
 
 
 

@@ -25,9 +25,5 @@ RUN wget -qO- https://deb.nodesource.com/setup_14.x | bash -
 RUN apt-get install -y nodejs
 RUN apt-get install g++
     
-
-COPY src/pulsar /home/myweb/pulsar
-RUN cd /home/myweb/pulsar && npm install pulsar-client && \
-    npm install -g pm2 --registry=https://registry.npm.taobao.org
-
-
+WORKDIR /home/myweb/pulsar
+RUN npm install -g pm2 --registry=https://registry.npm.taobao.org
