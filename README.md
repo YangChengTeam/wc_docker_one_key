@@ -9,8 +9,9 @@
       - pulsar服务器名称:pulsar
       - pulsar token: 查看./client.token
 -  git clone https://gitee.com/mzpbvsig/wc_docker_one_key.git
-- cd wc_docker_one_key
+-  cd wc_docker_one_key
 -  sh install.sh
+-  稍等1~2分钟
 -  sh pulsar_create_tenants_topics.sh
    - pulsar 启动后执行
 -  sh pulsar_manager_create_account.sh 
