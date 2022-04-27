@@ -29,7 +29,6 @@ services:
     volumes:
       # app
       - /home/myweb/yf-local:/home/myweb/yf-local
-      - ./php/src/pulsar:/home/myweb/pulsar
       - ./php/app.json:/home/myweb/app.json
       - ./php/pulsarNode.sh:/home/myweb/pulsarNode.sh
       # php.ini
