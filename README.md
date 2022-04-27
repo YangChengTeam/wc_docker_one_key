@@ -8,7 +8,7 @@
       - redis服务器名称:redis
       - pulsar服务器名称:pulsar
       - pulsar token: 查看./client.token
--  git clone https://github.com/YangChengTeam/wc_docker_one_key.git
+-  git clone https://gitee.com/mzpbvsig/wc_docker_one_key.git
 - cd wc_docker_one_key
 -  sh install.sh
 -  sh pulsar_create_tenants_topics.sh
@@ -17,6 +17,7 @@
    - http://服务器ip:9527/#/management/tenants
    - 等待 pulsar_manager 已启动
 -  sh app.sh config && sh app.sh start
+
 
 
 ### 管理
@@ -42,3 +43,8 @@
     - 管理地址:  服务器ip   
     - 端口： 3306
     - 密码:  123456
+
+
+### app调试
+
+- sh app.sh debug
